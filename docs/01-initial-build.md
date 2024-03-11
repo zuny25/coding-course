@@ -31,15 +31,20 @@
      -d는 데몬 옵션으로 백그라운드에서 계속 돌아가도록 설정하는 옵션입니다.
 
 3. lint 적용
+
    - Dependency 설치
+
    ```
    yarn add prettier eslint-config-airbnb eslint-config-airbnb-typescript eslint-config-prettier @typescript-eslint/eslint-plugin @typescript-eslint/parser -D
    ```
+
    - package 스크립트에 린트와 prettier 추가
+
    ```
     "format": "prettier --check --ignore-path .gitignore .",
    "format:fix": "prettier --write --ignore-path .gitignore .",
    ```
+
    - eslint 룰 추가
      .eslintrc.json에 다음 내용추가
      ```
@@ -72,6 +77,7 @@
      }
      ```
    - .prettierrc 추가
+
    ```
    {
    	"semi": false,
@@ -83,7 +89,30 @@
    	"arrowParens": "always"
    }
    ```
+
    - 린트 전체 적용
+
    ```
    yarn format:fix
    ```
+
+   - husky 설정
+
+   ```
+   yarn add husky -D
+
+   yarn husky install
+
+   yarn add lint-staged -D
+   ```
+
+   - package.json에 lint-staged룰을 추가한다.
+
+   ````
+   "lint-staged": {
+   		"*.{ts,tsx,js,jsx,json,css,scss,md,html}": [
+   			"yarn format:fix"
+   		]
+   	}
+   	```
+   ````
