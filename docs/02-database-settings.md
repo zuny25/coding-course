@@ -29,7 +29,6 @@
 - (optional) gitignore에 .env를 포함하지 않도록 추가합니다.
 	- 지금은 로컬 개발이라서 크게 상관이 없습니다.
 
-
 ## Test DB
 - schema.prisma에 테스트용 모델을 추가합니다.
 	```prisma
@@ -50,4 +49,4 @@
 
 - db에 잘 들어갔는지 확인합니다.
  https://dev.mysql.com/downloads/workbench/ 를 이용하면 편하게 확인가능합니다.
- 
+
