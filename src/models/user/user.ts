@@ -5,3 +5,9 @@ export interface User {
   role: 'member' | 'admin'
   createdAt: Date
 }
+
+export interface UserForgetPassword {
+  id: string
+  resetToken?: string
+  resetTokenExpiry?: Date
+}

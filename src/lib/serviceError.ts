@@ -1,4 +1,4 @@
-type ErrorName = 'DUPLICATION_ON_CREATE'
+type ErrorName = 'DUPLICATION_ON_CREATE' | 'ERROR_ON_UPDATE'
 
 export default class DataAccessError extends Error {
   name: ErrorName

@@ -18,17 +18,19 @@ enum Roles {
   member
 }
 model User {
-  id            String    @id @default(uuid())
-  name          String
-  email         String?   @unique
-  password      String?
-  image         String?
-  role          Roles     @default(member)
-  emailVerified DateTime? @map("email_verified")
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  accounts      Account[]
-  sessions      Session[]
+  id               String    @id @default(uuid())
+  name             String
+  email            String?   @unique
+  password         String?
+  image            String?
+  role             Roles     @default(member)
+  emailVerified    DateTime? @map("email_verified")
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  resetToken       String?   @map("reset_token") @db.Text
+  resetTokenExpiry DateTime? @map("reset_toekn_expiry")
+  accounts         Account[]
+  sessions         Session[]
 
   @@map("users")
 }
