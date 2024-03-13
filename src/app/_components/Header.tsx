@@ -17,7 +17,7 @@ export default async function Header() {
       <section>CodingCourse</section>
       {!user && (
         <>
-          <Link href="/join">가입하기</Link>
+          <Link href="/register">가입하기</Link>
           <Link href="/login">로그인하기</Link>
         </>
       )}

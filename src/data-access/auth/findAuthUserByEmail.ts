@@ -1,16 +1,6 @@
 import prismaClient from '@/lib/prismaClient'
-import { User as PUser } from '@prisma/client'
 import { AuthUser } from '@/models/auth/auth-user'
-
-function mapPrismaUserToAuthUser(user: PUser): AuthUser {
-  return {
-    id: user.id,
-    name: user.name,
-    email: user.email !== null ? user.email : '',
-    password: user.password !== null ? user.password : undefined,
-    role: user.role,
-  }
-}
+import mapPrismaUserToAuthUser from './_mapPrismaUserToAuthUser'
 
 export default async function findUserByEmail(
   email: string,
