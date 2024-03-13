@@ -1,4 +1,4 @@
-import { auth, signOut } from '@/lib/auth/auth'
+import { auth, signOut } from '@/auth'
 import Link from 'next/link'
 
 export default async function Header() {
@@ -10,6 +10,7 @@ export default async function Header() {
 
     await signOut()
   }
+  console.log(user)
 
   return (
     <header>

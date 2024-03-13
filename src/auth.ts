@@ -1,16 +1,14 @@
 import NextAuth from 'next-auth'
-import { PrismaAdapter } from '@auth/prisma-adapter'
-import prisma from '@/lib/prisma/prisma'
+
 import CredentialsProvider from 'next-auth/providers/credentials'
+import GoogleProvider from 'next-auth/providers/google'
+import GitHubProvider from 'next-auth/providers/github'
 import bcrypt from 'bcryptjs'
-import findUserByEmail from '../prisma/auth/findUserByEmail'
+import findUserByEmail from '@/data-access/auth/findAuthUserByEmail'
+import authConfig from './auth.config'
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  session: { strategy: 'jwt' },
-  adapter: PrismaAdapter(prisma),
-  pages: {
-    signIn: '/login',
-  },
+  ...authConfig,
   providers: [
     CredentialsProvider({
       name: 'Sign in',
@@ -41,29 +39,17 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           id: user.id,
           email: user.email,
           name: user.name,
+          role: user.role,
         }
       },
     }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+    GitHubProvider({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+    }),
   ],
-  callbacks: {
-    session({ session, token }) {
-      return {
-        ...session,
-        user: {
-          ...session.user,
-          id: typeof token.id === 'string' ? token.id : undefined,
-        },
-      }
-    },
-    jwt({ token, user }) {
-      if (user) {
-        const u = user as unknown as any
-        return {
-          ...token,
-          id: u.id,
-        }
-      }
-      return token
-    },
-  },
 })

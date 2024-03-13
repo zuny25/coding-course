@@ -35,11 +35,15 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx,json,css,scss,md,html}": [
       "yarn format:fix"
     ]
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   }
 }
