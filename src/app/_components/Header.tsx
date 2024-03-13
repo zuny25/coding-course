@@ -10,7 +10,6 @@ export default async function Header() {
 
     await signOut()
   }
-  console.log(user)
 
   return (
     <header>
@@ -23,7 +22,7 @@ export default async function Header() {
       )}
       {user && (
         <form action={logoutAction}>
-          <button type="submit">Lougout</button>
+          <button type="submit">로그아웃</button>
         </form>
       )}
     </header>
