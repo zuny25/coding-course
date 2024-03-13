@@ -8,7 +8,7 @@ const authConfig = {
   session: { strategy: 'jwt' },
   adapter: PrismaAdapter(prisma),
   pages: {
-    // signIn: '/login',
+    signIn: '/login',
   },
   providers: [],
   callbacks: {
