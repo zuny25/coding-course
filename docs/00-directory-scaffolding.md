@@ -4,12 +4,12 @@
 
 - src
   - app
-     - _actions
-       - 해당 route에서 사용되는 server action 들을 모아두는 디렉토리입니다.
-     - \_components
-       - 해당 route에서 사용되는 컴포넌트들을 모아두는 디렉토리입니다.
-     - \_hooks
-       - 해당 route에서 사용되는 커스텀 훅들을 모아두는 디렉토리입니다.
+    - \_actions
+      - 해당 route에서 사용되는 server action 들을 모아두는 디렉토리입니다.
+    - \_components
+      - 해당 route에서 사용되는 컴포넌트들을 모아두는 디렉토리입니다.
+    - \_hooks
+      - 해당 route에서 사용되는 커스텀 훅들을 모아두는 디렉토리입니다.
   - components
     - 공용으로 사용되는 컴포넌트들을 모아놓는 디렉토리입니다.
   - data-access
