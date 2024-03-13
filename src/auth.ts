@@ -11,7 +11,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   ...authConfig,
   providers: [
     CredentialsProvider({
-      name: 'Sign in',
+      name: 'Email',
       id: 'credentials',
       credentials: {
         email: {
