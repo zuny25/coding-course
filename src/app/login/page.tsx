@@ -1,12 +1,11 @@
 import GoogleSignIn from '@/components/auth/GoogleSignIn'
 import GithubSignIn from '@/components/auth/GithubSingnIn'
-
-import RegisterForm from './_components/RegisterForm'
+import LoginForm from './_components/LoginForm'
 
 export default function RegisterPage() {
   return (
     <section>
-      <RegisterForm />
+      <LoginForm />
       <GoogleSignIn />
       <GithubSignIn />
     </section>

@@ -3,16 +3,16 @@
 import { signIn } from 'next-auth/react'
 import { useTransition } from 'react'
 
-export default function GoogleRegister() {
+export default function GithubSignIn() {
   const [pending, startTransition] = useTransition()
 
   const handleClick = () =>
     startTransition(async () => {
-      await signIn('google', { callbackUrl: '/' })
+      await signIn('github', { callbackUrl: '/' })
     })
   return (
     <button type="button" onClick={handleClick} disabled={pending}>
-      Google
+      Github
     </button>
   )
 }

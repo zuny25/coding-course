@@ -6,7 +6,7 @@ import { ServerAction } from '@/models/server-action'
 import {
   RegisterUserInput,
   registerUserSchema,
-} from './schema/register-user-schema'
+} from '../_schema/register-user-schema'
 
 export default async function registerUserAction(input: RegisterUserInput) {
   const { name, email, password } = registerUserSchema.parse(input)

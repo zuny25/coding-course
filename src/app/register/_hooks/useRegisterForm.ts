@@ -12,7 +12,7 @@ import { useTransition } from 'react'
 import {
   RegisterUserInput,
   registerUserSchema,
-} from '../_actions/schema/register-user-schema'
+} from '../_schema/register-user-schema'
 
 import { registerUserActionClient } from '../_actions/registerUser'
 
