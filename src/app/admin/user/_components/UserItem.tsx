@@ -1,7 +1,8 @@
 import { User } from '@/models/user/user'
+import { Link, Td, Tr } from '@chakra-ui/react'
 import { format } from 'date-fns/format'
 
-import Link from 'next/link'
+import NextLink from 'next/link'
 
 interface Props {
   user: User
@@ -9,12 +10,16 @@ interface Props {
 
 export default function UserItem({ user }: Props) {
   return (
-    <li>
-      <Link href={`/admin/user/${user.id}`}>{user.name}</Link>
-      <div>{user.email}</div>
-      <div>{user.role}</div>
-      <div>{format(user.createdAt, 'yyyy-MM-dd')}</div>
-      <br />
-    </li>
+    <Tr>
+      <Td>
+        <Link as={NextLink} href={`/admin/user/${user.id}`}>
+          {user.name}
+        </Link>
+      </Td>
+
+      <Td>{user.email}</Td>
+      <Td>{user.role}</Td>
+      <Td>{format(user.createdAt, 'yyyy-MM-dd')}</Td>
+    </Tr>
   )
 }

@@ -1,5 +1,8 @@
 'use client'
 
+import { FaGoogle } from 'react-icons/fa'
+
+import { Button } from '@chakra-ui/react'
 import { signIn } from 'next-auth/react'
 import { useTransition } from 'react'
 
@@ -11,8 +14,14 @@ export default function GoogleSignIn() {
       await signIn('google', { callbackUrl: '/' })
     })
   return (
-    <button type="button" onClick={handleClick} disabled={pending}>
+    <Button
+      type="button"
+      variant="outline"
+      onClick={handleClick}
+      isLoading={pending}
+      leftIcon={<FaGoogle />}
+    >
       Google
-    </button>
+    </Button>
   )
 }

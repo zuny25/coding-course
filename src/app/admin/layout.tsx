@@ -1,4 +1,5 @@
 import { auth } from '@/auth'
+import { Container } from '@chakra-ui/react'
 import { redirect } from 'next/navigation'
 
 interface Props {
@@ -18,5 +19,9 @@ export default async function AdminLayout({ children }: Props) {
     redirect('/')
   }
 
-  return <section>{children}</section>
+  return (
+    <Container maxW="100%" p={0}>
+      {children}
+    </Container>
+  )
 }
