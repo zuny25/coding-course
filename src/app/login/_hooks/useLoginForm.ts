@@ -3,9 +3,10 @@ import { useTransition } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { signIn } from 'next-auth/react'
+
 import { useRouter } from 'next/navigation'
 import { LoginUserInput, loginUserSchema } from '../_schema/login-user-schema'
+import loginWithCredential from '../_actions/loginWithCredential'
 
 export default function useLoginForm(callbackUrl: string) {
   const router = useRouter()
@@ -17,11 +18,10 @@ export default function useLoginForm(callbackUrl: string) {
   const onSubmitHandler: SubmitHandler<LoginUserInput> = (values) => {
     startTransition(async () => {
       try {
-        const res = await signIn('credentials', {
-          redirect: false,
+        const res = await loginWithCredential({
           email: values.email,
           password: values.password,
-          redirectTo: callbackUrl,
+          callbackUrl,
         })
         if (!res?.error) {
           router.push(callbackUrl)

@@ -1,11 +1,7 @@
 import { Box, Container } from '@chakra-ui/react'
-import { auth } from '@/auth'
 import Header from './_components/Header'
 
-export default async function Home() {
-  const session = await auth()
-  const user = session?.user
-  console.log(user)
+export default function Home() {
   return (
     <Container maxW="100%" p={0}>
       <Header />
@@ -13,5 +9,3 @@ export default async function Home() {
     </Container>
   )
 }
-
-export const dynamic = 'force-dynamic'
