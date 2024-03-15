@@ -1,6 +1,7 @@
 'use client'
 
 import useUpdateSearchParam from '@/lib/hooks/useUpdateSearchParam'
+import { Container, Flex, Input, Select } from '@chakra-ui/react'
 import { useState } from 'react'
 
 export default function SearchUser() {
@@ -33,17 +34,19 @@ export default function SearchUser() {
   }
 
   return (
-    <section>
-      <select onChange={handleSelect} value={field}>
-        <option value="email">email</option>
-        <option value="user">user</option>
-      </select>
-      <input
-        type="text"
-        value={query}
-        onChange={handleInputChange}
-        onKeyDown={handleKeyDown}
-      />
-    </section>
+    <Container maxW="container.m" p={0}>
+      <Flex gap={2}>
+        <Select width="150px" onChange={handleSelect} value={field}>
+          <option value="email">email</option>
+          <option value="user">user</option>
+        </Select>
+        <Input
+          type="text"
+          value={query}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
+        />
+      </Flex>
+    </Container>
   )
 }

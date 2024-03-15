@@ -1,5 +1,6 @@
 import Pagination from '@/components/Pagination/Pagination'
 import searchUserList from '@/data-access/user/searchUserList'
+import { Flex } from '@chakra-ui/react'
 import UserList from './_components/UserList'
 import SearchUser from './_components/SearchUser'
 
@@ -20,7 +21,7 @@ export default async function AdminUserListPage({
     await searchUserList(params)
 
   return (
-    <section>
+    <Flex direction="column" mt={4}>
       <SearchUser />
       <UserList users={items} />
       <Pagination
@@ -28,6 +29,6 @@ export default async function AdminUserListPage({
         totalPages={totalPages}
         totalItems={totalItems}
       />
-    </section>
+    </Flex>
   )
 }

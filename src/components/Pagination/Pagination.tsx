@@ -1,3 +1,5 @@
+import { Center, HStack } from '@chakra-ui/react'
+import { RxCaretLeft, RxCaretRight } from 'react-icons/rx'
 import PageLink from './PageLink'
 
 interface Props {
@@ -27,23 +29,22 @@ export default function Pagination({
   const modifier = getPaginationModifier(currentPage, totalPages)
 
   return (
-    <section>
-      <PageLink page={currentPage - 1} disabled={currentPage === 1}>
-        Prev
-      </PageLink>
-      <ul>
+    <Center>
+      <HStack spacing={1}>
+        <PageLink page={currentPage - 1} disabled={currentPage === 1}>
+          <RxCaretLeft />
+        </PageLink>
+
         {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => (
-          <li
-            key={i}
-            // className={clsx(currentPage === modifier + i && styles.active)}
-          >
-            <PageLink page={modifier + i}>{modifier + i}</PageLink>
-          </li>
+          <PageLink key={i} page={modifier + i} currentPage={i + 1}>
+            {modifier + i}
+          </PageLink>
         ))}
-      </ul>
-      <PageLink page={currentPage + 1} disabled={currentPage === totalPages}>
-        Next
-      </PageLink>
-    </section>
+
+        <PageLink page={currentPage + 1} disabled={currentPage === totalPages}>
+          <RxCaretRight />
+        </PageLink>
+      </HStack>
+    </Center>
   )
 }
