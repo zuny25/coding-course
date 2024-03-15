@@ -1,11 +1,10 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import './globals.css'
-import { SessionProvider } from 'next-auth/react'
 
-import Header from './_components/Header'
+import { Container } from '@chakra-ui/react'
+import Providers from './_components/Providers'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -19,11 +18,12 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <SessionProvider>
-          <Header />
-          {children}
-        </SessionProvider>
+      <body className={inter.variable}>
+        <Providers>
+          <Container maxW="container.xl" p={0}>
+            {children}
+          </Container>
+        </Providers>
       </body>
     </html>
   )
